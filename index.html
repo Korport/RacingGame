@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Top-Down Racer</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="hud">
+      <div><b>Score:</b> <span id="score">0</span></div>
+      <div><b>Best:</b> <span id="best">0</span></div>
+      <button class="btn" id="restart">Restart</button>
+    </div>
+    <div class="canvasWrap">
+      <canvas id="game" width="420" height="640" aria-label="Top-down racing game canvas"></canvas>
+      <div id="leaderboardOverlay" class="leaderboard-overlay" role="dialog" aria-hidden="true">
+          <div class="leaderboard-panel" id="leaderboardPanel">
+            <h2>Leaderboard — Top 10</h2>
+            <div id="congratsBanner" style="display:none; margin-bottom:8px; font-weight:700; color:#ffd28a;"></div>
+            <div id="nameEntry" style="display:none; margin-bottom:8px;">
+              <input id="playerNameInput" type="text" placeholder="Enter your name" style="width:60%; padding:6px; border-radius:6px; border:1px solid #20323f; margin-right:8px;" maxlength="20" />
+              <button id="saveNameBtn" class="btn">Save</button>
+            </div>
+            <div id="leaderboardContent" class="leaderboard-list">Loading…</div>
+            <div class="leaderboard-actions">
+              <button id="overlayRestart" class="btn">Restart</button>
+              <a class="btn" href="leaderboard.html">Full Leaderboard</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="controls" role="toolbar" aria-label="On-screen controls">
+      <button id="btn-left" class="btn control-btn" aria-label="Steer left">◀</button>
+      <button id="btn-right" class="btn control-btn" aria-label="Steer right">▶</button>
+    </div>
+    <div class="hint">
+      ← → to steer. Avoid obstacles. <b>Space</b> to restart after crash.
+    </div>
+  </div>
+
+  <script src="js/game.js" defer></script>
+</body>
+</html>
