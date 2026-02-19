@@ -3,11 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Top-Down Racer</title>
+  <title>Super Star Racers</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <audio id="startMusic" loop preload="auto">
+    <source src="assets/Turbo Tunnel Loop.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="gameMusic" loop preload="auto">
+    <source src="assets/Midnight Apex Run.mp3" type="audio/mpeg">
+  </audio>
   <div class="wrap">
+    <div id="startScreen" class="start-screen">
+      <div class="start-panel">
+        <h1>SUPER STAR RACERS</h1>
+        <img src="assets/Splashart.png" alt="Splash Art" class="splash-art" />
+        <h2>Select Your Vehicle</h2>
+        <div class="car-selector">
+          <div class="car-option" data-car="RaceCar.png">
+            <img src="assets/RaceCar.png" alt="Race Car" />
+            <p>Race Car</p>
+          </div>
+          <div class="car-option" data-car="RedConvertible.png">
+            <img src="assets/RedConvertible.png" alt="Red Convertible" />
+            <p>Red Convertible</p>
+          </div>
+          <div class="car-option" data-car="Motorcycle.png">
+            <img src="assets/Motorcycle.png?v=1" alt="Motorcycle" />
+            <p>Motorcycle</p>
+          </div>
+          <div class="car-option" data-car="Falcon.png">
+            <img src="assets/Falcon.png?v=1" alt="Falcon" />
+            <p>Falcon</p>
+          </div>
+          <div class="car-option" data-car="Unicorn.png">
+            <img src="assets/Unicorn.png" alt="Unicorn" />
+            <p>Unicorn</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; justify-content: center; margin-top: 12px;">
+          <button id="startGameBtn" class="btn start-btn">Start Game</button>
+          <button id="settingsBtn" class="btn" style="padding: 12px 16px; font-size: 16px;">⚙️</button>
+          <button id="muteBtn" class="btn" style="padding: 12px 16px; font-size: 16px;">🔊</button>
+        </div>
+      </div>
+    </div>
+    <div id="settingsScreen" class="settings-screen hidden">
+      <div class="settings-panel">
+        <h2>Settings</h2>
+        <div class="settings-content">
+          <div class="setting-item">
+            <label for="musicToggle">Background Music</label>
+            <button id="musicToggle" class="toggle-btn">ON</button>
+          </div>
+          <div class="setting-item">
+            <label for="difficultySelect">Starting Difficulty</label>
+            <div class="difficulty-selector">
+              <button class="difficulty-btn" data-difficulty="0">Easy</button>
+              <button class="difficulty-btn" data-difficulty="1">Normal</button>
+              <button class="difficulty-btn selected" data-difficulty="2">Hard</button>
+              <button class="difficulty-btn" data-difficulty="3">Expert</button>
+            </div>
+          </div>
+        </div>
+        <div class="settings-actions">
+          <button id="closeSettingsBtn" class="btn">Close</button>
+        </div>
+      </div>
+    </div>
     <div class="hud">
       <div><b>Score:</b> <span id="score">0</span></div>
       <div><b>Best:</b> <span id="best">0</span></div>
