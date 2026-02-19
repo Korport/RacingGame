@@ -291,6 +291,21 @@ function spawnObstacle() {
 function resetGame() {
   running = true; score = 0; obstacles.length = 0; player.x = W / 2 - player.w / 2; player.dx = 0;
   spawnTimer = 0; elapsedTime = DIFFICULTY_OFFSETS[selectedDifficulty]; spawnEvery = INITIAL_SPAWN_INTERVAL; obstacleSpeed = INITIAL_OBSTACLE_SPEED; dashSpeed = 240; scoreEl.textContent = "0"; try { hideLeaderboardOverlay(); } catch (e) {}
+  // Ensure game music is resumed when restarting after a crash
+  try {
+    if (gameMusic) {
+      if (enableGameMusic) {
+        gameMusic.volume = 0.35;
+        // restart from the beginning so music matches game start
+        gameMusic.currentTime = 0;
+        gameMusic.play().catch(err => console.log('Game music playback error on reset:', err));
+      } else {
+        gameMusic.pause();
+      }
+    }
+    // also ensure start music is paused when restarting into gameplay
+    if (startMusic) startMusic.pause();
+  } catch (e) {}
 }
 
 function startGame() {
